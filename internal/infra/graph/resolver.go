@@ -1,6 +1,6 @@
 package graph
 
-import "github.com/Frank-Macedo/20-cleanArch/internal/usecase"
+import "github.com/Frank-Macedo/challengeCleanArch/internal/usecase"
 
 // This file will not be regenerated automatically.
 //

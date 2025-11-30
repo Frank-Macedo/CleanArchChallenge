@@ -8,13 +8,13 @@ import (
 
 	graphql_handler "github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/Frank-Macedo/20-cleanArch/configs"
-	"github.com/Frank-Macedo/20-cleanArch/internal/event/handler"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/graph"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/grpc/pb"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/grpc/service"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/web/webserver"
-	"github.com/Frank-Macedo/20-cleanArch/pkg/events"
+	configs "github.com/Frank-Macedo/challengeCleanArch/configs"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/event/handler"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/graph"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/grpc/pb"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/grpc/service"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/web/webserver"
+	"github.com/Frank-Macedo/challengeCleanArch/pkg/events"
 	"github.com/streadway/amqp"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -47,8 +47,16 @@ func main() {
 
 	webserver := webserver.NewWebServer(configs.WebServerPort)
 	webOrderHandler := NewWebOrderHandler(dbConn, eventDispatcher)
-	webserver.AddHandler("/order", webOrderHandler.Create)
-	webserver.AddHandler("/getorder", webOrderHandler.GetAll)
+	webserver.AddHandler("/order", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodPost:
+			webOrderHandler.Create(w, r)
+		case http.MethodGet:
+			webOrderHandler.GetAll(w, r)
+		default:
+			w.WriteHeader(http.StatusMethodNotAllowed)
+		}
+	})
 
 	fmt.Println("Starting web server on port", configs.WebServerPort)
 	go webserver.Start()

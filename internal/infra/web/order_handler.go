@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/Frank-Macedo/20-cleanArch/internal/entity"
-	"github.com/Frank-Macedo/20-cleanArch/internal/usecase"
-	"github.com/Frank-Macedo/20-cleanArch/pkg/events"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/entity"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/usecase"
+	"github.com/Frank-Macedo/challengeCleanArch/pkg/events"
 )
 
 type WebOrderHandler struct {

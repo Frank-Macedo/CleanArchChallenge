@@ -30,6 +30,6 @@ message CreateOrderResponse {
 
 service OrderService {
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
-  rpc GetOrders(google.protobuf.Empty) returns (OrderList);
+  rpc ListOrders(google.protobuf.Empty) returns (OrderList);
 
 }

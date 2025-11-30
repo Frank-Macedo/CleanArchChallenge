@@ -8,8 +8,8 @@ package graph
 import (
 	"context"
 
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/graph/model"
-	"github.com/Frank-Macedo/20-cleanArch/internal/usecase"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/graph/model"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/usecase"
 )
 
 // CreateOrder is the resolver for the createOrder field.
@@ -31,8 +31,8 @@ func (r *mutationResolver) CreateOrder(ctx context.Context, input *model.OrderIn
 	}, nil
 }
 
-// GetOrders is the resolver for the getOrders field.
-func (r *queryResolver) GetOrders(ctx context.Context) ([]*model.Order, error) {
+// ListOrders is the resolver for the listOrders field.
+func (r *queryResolver) ListOrders(ctx context.Context) ([]*model.Order, error) {
 	orders, err := r.GetOrderUseCase.Execute()
 	if err != nil {
 		return nil, err

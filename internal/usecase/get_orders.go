@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"github.com/Frank-Macedo/20-cleanArch/internal/entity"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/entity"
 )
 
 type GetOrdersUseCase struct {

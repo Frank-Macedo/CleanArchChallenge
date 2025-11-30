@@ -6,12 +6,12 @@ package main
 import (
 	"database/sql"
 
-	"github.com/Frank-Macedo/20-cleanArch/internal/entity"
-	"github.com/Frank-Macedo/20-cleanArch/internal/event"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/database"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/web"
-	"github.com/Frank-Macedo/20-cleanArch/internal/usecase"
-	"github.com/Frank-Macedo/20-cleanArch/pkg/events"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/entity"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/event"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/database"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/web"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/usecase"
+	"github.com/Frank-Macedo/challengeCleanArch/pkg/events"
 	"github.com/google/wire"
 )
 

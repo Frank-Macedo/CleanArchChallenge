@@ -284,10 +284,11 @@ const file_order_proto_rawDesc = "" +
 	"\x05price\x18\x02 \x01(\x02R\x05price\x12\x10\n" +
 	"\x03tax\x18\x03 \x01(\x02R\x03tax\x12\x1f\n" +
 	"\vfinal_price\x18\x04 \x01(\x02R\n" +
-	"finalPrice2\x82\x01\n" +
+	"finalPrice2\x83\x01\n" +
 	"\fOrderService\x12>\n" +
-	"\vCreateOrder\x12\x16.pb.CreateOrderRequest\x1a\x17.pb.CreateOrderResponse\x122\n" +
-	"\tGetOrders\x12\x16.google.protobuf.Empty\x1a\r.pb.OrderListB\x18Z\x16internal/infra/grpc/pbb\x06proto3"
+	"\vCreateOrder\x12\x16.pb.CreateOrderRequest\x1a\x17.pb.CreateOrderResponse\x123\n" +
+	"\n" +
+	"ListOrders\x12\x16.google.protobuf.Empty\x1a\r.pb.OrderListB\x18Z\x16internal/infra/grpc/pbb\x06proto3"
 
 var (
 	file_order_proto_rawDescOnce sync.Once
@@ -312,9 +313,9 @@ var file_order_proto_goTypes = []any{
 var file_order_proto_depIdxs = []int32{
 	0, // 0: pb.OrderList.orders:type_name -> pb.Order
 	1, // 1: pb.OrderService.CreateOrder:input_type -> pb.CreateOrderRequest
-	4, // 2: pb.OrderService.GetOrders:input_type -> google.protobuf.Empty
+	4, // 2: pb.OrderService.ListOrders:input_type -> google.protobuf.Empty
 	3, // 3: pb.OrderService.CreateOrder:output_type -> pb.CreateOrderResponse
-	2, // 4: pb.OrderService.GetOrders:output_type -> pb.OrderList
+	2, // 4: pb.OrderService.ListOrders:output_type -> pb.OrderList
 	3, // [3:5] is the sub-list for method output_type
 	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

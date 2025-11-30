@@ -14,7 +14,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/Frank-Macedo/20-cleanArch/internal/infra/graph/model"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/infra/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -59,7 +59,7 @@ type ComplexityRoot struct {
 	}
 
 	Query struct {
-		GetOrders func(childComplexity int) int
+		ListOrders func(childComplexity int) int
 	}
 }
 
@@ -67,7 +67,7 @@ type MutationResolver interface {
 	CreateOrder(ctx context.Context, input *model.OrderInput) (*model.Order, error)
 }
 type QueryResolver interface {
-	GetOrders(ctx context.Context) ([]*model.Order, error)
+	ListOrders(ctx context.Context) ([]*model.Order, error)
 }
 
 type executableSchema struct {
@@ -126,12 +126,12 @@ func (e *executableSchema) Complexity(ctx context.Context, typeName, field strin
 
 		return e.complexity.Order.Tax(childComplexity), true
 
-	case "Query.getOrders":
-		if e.complexity.Query.GetOrders == nil {
+	case "Query.listOrders":
+		if e.complexity.Query.ListOrders == nil {
 			break
 		}
 
-		return e.complexity.Query.GetOrders(childComplexity), true
+		return e.complexity.Query.ListOrders(childComplexity), true
 
 	}
 	return 0, false
@@ -261,7 +261,7 @@ var parsedSchema = gqlparser.MustLoadSchema(sources...)
 func (ec *executionContext) field_Mutation_createOrder_args(ctx context.Context, rawArgs map[string]any) (map[string]any, error) {
 	var err error
 	args := map[string]any{}
-	arg0, err := graphql.ProcessArgField(ctx, rawArgs, "input", ec.unmarshalOOrderInput2ᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrderInput)
+	arg0, err := graphql.ProcessArgField(ctx, rawArgs, "input", ec.unmarshalOOrderInput2ᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrderInput)
 	if err != nil {
 		return nil, err
 	}
@@ -343,7 +343,7 @@ func (ec *executionContext) _Mutation_createOrder(ctx context.Context, field gra
 			return ec.resolvers.Mutation().CreateOrder(ctx, fc.Args["input"].(*model.OrderInput))
 		},
 		nil,
-		ec.marshalOOrder2ᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder,
+		ec.marshalOOrder2ᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder,
 		true,
 		false,
 	)
@@ -499,23 +499,23 @@ func (ec *executionContext) fieldContext_Order_FinalPrice(_ context.Context, fie
 	return fc, nil
 }
 
-func (ec *executionContext) _Query_getOrders(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
+func (ec *executionContext) _Query_listOrders(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
 	return graphql.ResolveField(
 		ctx,
 		ec.OperationContext,
 		field,
-		ec.fieldContext_Query_getOrders,
+		ec.fieldContext_Query_listOrders,
 		func(ctx context.Context) (any, error) {
-			return ec.resolvers.Query().GetOrders(ctx)
+			return ec.resolvers.Query().ListOrders(ctx)
 		},
 		nil,
-		ec.marshalOOrder2ᚕᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder,
+		ec.marshalOOrder2ᚕᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder,
 		true,
 		false,
 	)
 }
 
-func (ec *executionContext) fieldContext_Query_getOrders(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
+func (ec *executionContext) fieldContext_Query_listOrders(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
 	fc = &graphql.FieldContext{
 		Object:     "Query",
 		Field:      field,
@@ -2260,7 +2260,7 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 		switch field.Name {
 		case "__typename":
 			out.Values[i] = graphql.MarshalString("Query")
-		case "getOrders":
+		case "listOrders":
 			field := field
 
 			innerFunc := func(ctx context.Context, _ *graphql.FieldSet) (res graphql.Marshaler) {
@@ -2269,7 +2269,7 @@ func (ec *executionContext) _Query(ctx context.Context, sel ast.SelectionSet) gr
 						ec.Error(ctx, ec.Recover(ctx, r))
 					}
 				}()
-				res = ec._Query_getOrders(ctx, field)
+				res = ec._Query_listOrders(ctx, field)
 				return res
 			}
 
@@ -2976,7 +2976,7 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOOrder2ᚕᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx context.Context, sel ast.SelectionSet, v []*model.Order) graphql.Marshaler {
+func (ec *executionContext) marshalOOrder2ᚕᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx context.Context, sel ast.SelectionSet, v []*model.Order) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -3003,7 +3003,7 @@ func (ec *executionContext) marshalOOrder2ᚕᚖgithubᚗcomᚋdevfullcycleᚋ20
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOOrder2ᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx, sel, v[i])
+			ret[i] = ec.marshalOOrder2ᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -3017,14 +3017,14 @@ func (ec *executionContext) marshalOOrder2ᚕᚖgithubᚗcomᚋdevfullcycleᚋ20
 	return ret
 }
 
-func (ec *executionContext) marshalOOrder2ᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx context.Context, sel ast.SelectionSet, v *model.Order) graphql.Marshaler {
+func (ec *executionContext) marshalOOrder2ᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrder(ctx context.Context, sel ast.SelectionSet, v *model.Order) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Order(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOOrderInput2ᚖgithubᚗcomᚋdevfullcycleᚋ20ᚑCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrderInput(ctx context.Context, v any) (*model.OrderInput, error) {
+func (ec *executionContext) unmarshalOOrderInput2ᚖgithubᚗcomᚋFrankᚑMacedoᚋchallengeCleanArchᚋinternalᚋinfraᚋgraphᚋmodelᚐOrderInput(ctx context.Context, v any) (*model.OrderInput, error) {
 	if v == nil {
 		return nil, nil
 	}

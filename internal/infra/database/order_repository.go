@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/Frank-Macedo/20-cleanArch/internal/db"
-	"github.com/Frank-Macedo/20-cleanArch/internal/entity"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/db"
+	"github.com/Frank-Macedo/challengeCleanArch/internal/entity"
 )
 
 type OrderRepository struct {

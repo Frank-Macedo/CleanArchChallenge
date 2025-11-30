@@ -1,4 +1,4 @@
-module github.com/Frank-Macedo/20-cleanArch
+module github.com/Frank-Macedo/challengeCleanArch
 
 go 1.24.6
 
