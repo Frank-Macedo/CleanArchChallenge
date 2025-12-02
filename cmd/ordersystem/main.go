@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	"log"
 	"net"
 	"net/http"
 
@@ -24,9 +25,11 @@ import (
 )
 
 func main() {
-	configs, err := configs.LoadConfig(".")
+	configs, err := configs.LoadConfig()
+	log.Printf("CONFIG => %+v\n", configs)
+
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	dbConn, err := sql.Open(configs.DBDriver, fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", configs.DBUser, configs.DBPassword, configs.DBHost, configs.DBPort, configs.DBName))
@@ -86,7 +89,7 @@ func main() {
 }
 
 func getRabbitMQChannel() *amqp.Channel {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	if err != nil {
 		panic(err)
 	}
