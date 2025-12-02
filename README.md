@@ -48,7 +48,7 @@ Certifique-se de ter instalado:
 ## 🔹 Inicializando a infraestrutura e a aplicação
 
 ```bash
-docker compose up -d
+docker compose up 
 ```
 
 ---
