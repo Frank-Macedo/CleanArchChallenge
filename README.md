@@ -43,9 +43,6 @@ Certifique-se de ter instalado:
 
 - Docker
 - Docker Compose
-- Go
-- Make
-
 ---
 
 ## 🔹 Inicializando a infraestrutura e a aplicação
