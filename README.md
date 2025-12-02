@@ -48,26 +48,10 @@ Certifique-se de ter instalado:
 
 ---
 
-## 🔹 Subindo a infraestrutura
+## 🔹 Inicializando a infraestrutura e a aplicação
 
 ```bash
 docker compose up -d
-```
-
----
-
-## 🔹 Executando as migrations
-
-```bash
-make migrate
-```
-
----
-
-## 🔹 Executando a aplicação
-
-```bash
-go run cmd/ordersystem/main.go wire_gen.go
 ```
 
 ---
